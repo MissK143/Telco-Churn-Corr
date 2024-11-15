@@ -1,5 +1,5 @@
 ![logo-correlationfunnel](https://github.com/user-attachments/assets/66cbcc0b-824b-4a56-9ddf-982d26e5dbd9)
-# Telco-Churn-Corr  <img src="logo-correlationfunnel.png" width="35%" align="right" style="border: 2px solid #2c3e50; margin-left: 10px;" />
+# Telco Customer Churn Project  <img src="logo-correlationfunnel.png" width="35%" align="right" style="border: 2px solid #2c3e50; margin-left: 10px;" />
 
 
 > Speed Up Exploratory Data Analysis (EDA)
