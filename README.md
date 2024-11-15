@@ -26,8 +26,9 @@ devtools::install_github("business-science/correlationfunnel")
 
 **Problem**: Exploratory data analysis (EDA) involves looking at
 feature-target relationships independently. This process is very time
-consuming even for small data sets. ***Rather than search for
-relationships, what if we could let the relationships come to
+consuming even for small data sets. 
+
+***Rather than search for relationships, what if we could let the relationships come to
 us?***
 
 <img src="https://raw.githubusercontent.com/MissK143/Telco-Churn-Corr/main/Figures/Corrolation-Funnel-Rplot.png" width="35%" align="right" style="border: 2px solid #2c3e50; margin-left: 10px;" />
@@ -247,3 +248,12 @@ relationships to semi-processed data meaning missing (`NA`) values have
 been treated, date or date-time features have been feature engineered,
 and data is in a “clean” format (numeric data and categorical data are
 ready to be correlated to a Yes/No response).
+
+## Here are several great EDA packages that can help you understand data
+issues (cleanliness) and get data preprared for Correlation Analysis\!
+
+  - [Data Explorer](https://boxuancui.github.io/DataExplorer/) -
+    Automates Exploration and Data Treatment. Amazing for investigating
+    features quickly and efficiently including by data type, missing
+    data, feature engineering, and identifying relationships.
+
