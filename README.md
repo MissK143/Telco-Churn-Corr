@@ -1,5 +1,5 @@
-![logo-correlationfunnel](https://github.com/user-attachments/assets/66cbcc0b-824b-4a56-9ddf-982d26e5dbd9)
-# Telco Customer Churn Project  <img src="logo-correlationfunnel.png" width="35%" align="right" style="border: 2px solid #2c3e50; margin-left: 10px;" />
+# Telco Customer Churn Project 
+<img src="https://raw.githubusercontent.com/MissK143/Telco-Churn-Corr/main/Figures/logo-correlationfunnel.png" alt="Description of image" width="35%" align="right" style="border: 2px solid #2c3e50; margin-left: 10px;" />
 
 
 > Speed Up Exploratory Data Analysis (EDA)
@@ -16,7 +16,7 @@ install.packages("correlationfunnel")
 ```
 
 You can install the development version of `correlationfunnel` from
-[GitHub](https://github.com/business-science/) with:
+[GitHub] Thank You Matt !! (https://github.com/business-science/) with:
 
 ``` r
 devtools::install_github("business-science/correlationfunnel")
@@ -29,7 +29,8 @@ feature-target relationships independently. This process is very time
 consuming even for small data sets. ***Rather than search for
 relationships, what if we could let the relationships come to
 us?***
- <img src="Corrolation-Funnel-Rplot.png" width="35%" align="right" style="border: 2px solid #2c3e50; margin-left: 10px;" />
+
+<img src="https://raw.githubusercontent.com/MissK143/Telco-Churn-Corr/main/Figures/Corrolation-Funnel-Rplot.png" width="35%" align="right" style="border: 2px solid #2c3e50; margin-left: 10px;" />
 
 Next, collect data to analyze. We’ll use Telco Customer Churn Data for a
 Telecommunications Company that was popularized by the [IBM Cognos Analytics]([https://archive.ics.uci.edu/ml/datasets/Bank+Marketing](https://accelerator.ca.analytics.ibm.com/bi/?pathRef=.public_folders%2FIBM%2BAccelerator%2BCatalog%2FContent%2FDAT00148)). 
@@ -37,10 +38,10 @@ We can load the data with
 `data("customer_churn_tbl")`.
 
 ``` r
-# Use ?customer_churn_tbl to get a description of the customer churn features
+# Use customer_churn_tbl to get a description of the customer churn features
 data("customer_churn_tbl")
-
 customer_churn_tbl %>% glimpse()
+
 Rows: 7,043
 Columns: 21
 $ customerID       <chr> "7590-VHVEG", "5575-GNVDE", "3668-QPYBK", "7795-CFO…
@@ -86,7 +87,7 @@ binary (0/1) format. We de-select any non-predictive features. The
 
 The result is a data frame that has only binary data with columns
 representing the bins that the observations fall into. Note that the
-output is shown in the `glimpse()` format. THere are now 80 columns that
+output is shown in the `glimpse()` format. There are now 80 columns that
 are binary (0/1).
 
 ``` r
@@ -160,6 +161,7 @@ This returns a specially formatted tibble with the feature, the bin, and
 the bin’s correlation to the target. The format is exactly what we need
 for the next step - Producing the **Correlation
 Funnel**
+
 ``` r
 customer_churn_corr <- customer_churn_bin %>%
     correlate(target = Churn)
@@ -170,6 +172,7 @@ $ feature     <fct> Churn, Contract, OnlineSecurity, TechSupport, tenure, Intern
 $ bin         <chr> NA, "Monthly_to_Month", "No", "No", "-Inf_9", "Fiber_optic", "Two_ye…
 $ correlation <dbl> 1.0000000, 0.4045646, 0.3422352, 0.3368771, 0.3170774, 0.3074626, -0…
 ```
+
 #### Step 3: Visualize the Correlation Funnel
 
 A **Correlation Funnel** is an tornado plot that lists the highest
@@ -181,7 +184,7 @@ library(ggplot2)
 customer_churn_corr %>%
     plot_correlation_funnel(interactive = TRUE)
  ```
- <img src="Corrolation-Funnel-Rplot.png" width="35%" align="right" style="border: 2px solid #2c3e50; margin-left: 10px;" />
+<img src="https://github.com/MissK143/Telco-Churn-Corr/blob/3b77326f437d54f6add2dc3ee72fd9e2d924f60b/Figures/Corrolation%20Funnel%20Rplot.png" alt="Description of image" width="35%" align="right" style="border: 2px solid #2c3e50; margin-left: 10px;" />
 
 ### Examining the Results
 
@@ -210,17 +213,33 @@ customer_churn_corr %>%
                           "tenure", "InternetService", "PaymentMethod")) %>%
     plot_correlation_funnel(interactive = FALSE, limits = c(-0.4, 0.4))
 ```
- <img src="Top5-Correlated-Feat-Rplot.png" width="35%" align="right" style="border: 2px solid #2c3e50; margin-left: 10px;" />
-  We can see that the following prospect features have a much greater
+<img src="https://github.com/MissK143/Telco-Churn-Corr/blob/main/Figures/Top%20Features%20Correlated%20with%20Customer%20ChurnRplot.png" alt="Description of image" width="35%" align="centre" style="border: 2px solid #2c3e50; margin-left: 10px;" />
+
+We can see that the following prospect features have a much greater
 correlation with the Churn target:
 
-  * Contract: Month-to-month (0.405): Customers on month-to-month contracts are more likely to churn, likely due to the flexibility of not being tied to a long-term commitment.
-    * OnlineSecurity: No (0.342) and TechSupport: No (0.337): Lack of online security and tech support is associated with a higher likelihood of churn, indicating that these services may be valued by customers.
-    * tenure: -Inf_9 (0.317): Customers with shorter tenure (0–9 months) are more likely to churn, suggesting that new customers may need more engagement or incentives to stay.
-    * InternetService: Fiber_optic (0.307): Customers with fiber optic internet show a positive association with churn, which could reflect competition or customer satisfaction issues.
-    * PaymentMethod: Electronic_check (0.301): Customers using electronic checks are more likely to churn, which may suggest a preference or behavior tied to this payment method.
-<img src="Top-Features-Correlated-with-Customer-ChurnRplot.png" width="35%" align="right" style="border: 2px solid #2c3e50; margin-left: 10px;" />
-    * Contract: Two_year (-0.302): Customers on two-year contracts are less likely to churn, indicating that long-term contracts help retain customers.
+   * *Contract*: Month-to-month (0.405): Customers on month-to-month contracts are more likely to churn, likely due to the flexibility of not being tied to a long-term commitment.
+    * *OnlineSecurity*: No (0.342) and TechSupport: No (0.337): Lack of online security and tech support is associated with a higher likelihood of churn, indicating that these services may be valued by customers.
+    * *tenure*: -Inf_9 (0.317): Customers with shorter tenure (0–9 months) are more likely to churn, suggesting that new customers may need more engagement or incentives to stay.
+    * *InternetService*: Fiber_optic (0.307): Customers with fiber optic internet show a positive association with churn, which could reflect competition or customer satisfaction issues.
+    * *PaymentMethod*: Electronic_check (0.301): Customers using electronic checks are more likely to churn, which may suggest a preference or behavior tied to this payment method.
+    * *Contract*: Two_year (-0.302): Customers on two-year contracts are less likely to churn, indicating that long-term contracts help retain customers.
+
+<img src="https://github.com/MissK143/Telco-Churn-Corr/blob/main/Figures/Top5%20Correlated%20Feat%20Rplot.png" alt="Description of image" width="35%" align="center" style="border: 2px solid #2c3e50; margin-left: 10px;"/>
+
+
+## Data-Driven Insights
+1. Retention Strategies:
+    * Focus retention efforts on month-to-month contract customers by offering incentives to switch to longer-term contracts.
+    * Consider promoting OnlineSecurity and TechSupport services, as these are linked to lower churn rates.
+2. Customer Engagement for New Customers:
+    * The positive correlation with short tenure indicates that new customers are at higher risk. Consider creating a robust onboarding experience or targeted offers for customers in their first year.
+3. Product Adjustments:
+    * Investigate why fiber optic customers might be more likely to churn, as this could point to specific satisfaction or pricing issues in that service tier.
+4. Payment Method Insights:
+    * Customers who pay via electronic check may have different behaviors; consider targeted campaigns or incentives for those using this payment method to encourage loyalty.
+
+This data-driven approach allows you to prioritize customer segments for retention efforts and enhance your services based on customer behavior patterns. 
 
 ## Important
 The main addition of `correlationfunnel` is to quickly expose feature
