@@ -31,10 +31,11 @@ consuming even for small data sets.
 ***Rather than search for relationships, what if we could let the relationships come to
 us?***
 
-<img src="https://raw.githubusercontent.com/MissK143/Telco-Churn-Corr/main/Figures/Corrolation-Funnel-Rplot.png" width="35%" align="right" style="border: 2px solid #2c3e50; margin-left: 10px;" />
+
 
 Next, collect data to analyze. We’ll use Telco Customer Churn Data for a
 Telecommunications Company that was popularized by the [IBM Cognos Analytics]([https://archive.ics.uci.edu/ml/datasets/Bank+Marketing](https://accelerator.ca.analytics.ibm.com/bi/?pathRef=.public_folders%2FIBM%2BAccelerator%2BCatalog%2FContent%2FDAT00148)). 
+
 We can load the data with
 `data("customer_churn_tbl")`.
 
@@ -151,8 +152,9 @@ $ MonthlyCharges__89.8625_Inf                <dbl> 0, 0, 0, 0, 0, 1, 0, 0, 1, 0,
 $ `TotalCharges__-Inf_401.45`                <dbl> 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0…
 $ TotalCharges__401.45_1397.475              <dbl> 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0…
 $ TotalCharges__1397.475_3794.7375           <dbl> 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0…
-$ TotalCharges__3794.7375_Inf                <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1…
-$ Churn
+$ TotalCharges__3794.7375_Inf                <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+$ Churn                                      <dbl> 0, 0, 1, 0, 1, 1, 0, 0, 1, …
+> 
 ```
 #### Step 2: Perform Correlation Analysis
 
